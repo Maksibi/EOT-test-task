@@ -1,0 +1,134 @@
+{
+  "ver": "1.0.27",
+  "importer": "image",
+  "imported": true,
+  "uuid": "270870cb-56e0-4d0a-8016-601ea5a05510",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "270870cb-56e0-4d0a-8016-601ea5a05510@6c48a",
+      "displayName": "pink_shroom",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "270870cb-56e0-4d0a-8016-601ea5a05510",
+        "visible": false
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9941": {
+      "importer": "sprite-frame",
+      "uuid": "270870cb-56e0-4d0a-8016-601ea5a05510@f9941",
+      "displayName": "pink_shroom",
+      "id": "f9941",
+      "name": "spriteFrame",
+      "userData": {
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0.5,
+        "offsetY": -1.5,
+        "trimX": 44,
+        "trimY": 19,
+        "width": 233,
+        "height": 285,
+        "rawWidth": 320,
+        "rawHeight": 320,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 1,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -116.5,
+            -142.5,
+            0,
+            116.5,
+            -142.5,
+            0,
+            -116.5,
+            142.5,
+            0,
+            116.5,
+            142.5,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            44,
+            301,
+            277,
+            301,
+            44,
+            16,
+            277,
+            16
+          ],
+          "nuv": [
+            0.1375,
+            0.05,
+            0.865625,
+            0.05,
+            0.1375,
+            0.940625,
+            0.865625,
+            0.940625
+          ],
+          "minPos": [
+            -116.5,
+            -142.5,
+            0
+          ],
+          "maxPos": [
+            116.5,
+            142.5,
+            0
+          ]
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "270870cb-56e0-4d0a-8016-601ea5a05510@6c48a",
+        "atlasUuid": "",
+        "trimType": "auto"
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "fixAlphaTransparencyArtifacts": false,
+    "hasAlpha": true,
+    "redirect": "270870cb-56e0-4d0a-8016-601ea5a05510@6c48a"
+  }
+}
