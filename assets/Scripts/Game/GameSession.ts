@@ -1,4 +1,7 @@
 import { _decorator, Component, input, Input, EventTouch, EventMouse } from 'cc';
+import { AudioManager } from '../Audio/AudioManager';
+import { SfxId } from '../Audio/SfxId';
+
 const { ccclass, property } = _decorator;
 
 @ccclass('GameSession')
@@ -37,13 +40,13 @@ export class GameSession extends Component {
         return this._hasStartedOnce ? 'Tap to restart' : 'Tap to start';
     }
 
-    onLoad() {
+    onLoad(): void {
         GameSession.instance = this;
         input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         input.on(Input.EventType.MOUSE_UP, this.onMouseUp, this);
     }
 
-    onDestroy() {
+    onDestroy(): void {
         input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         input.off(Input.EventType.MOUSE_UP, this.onMouseUp, this);
         if (GameSession.instance === this) {
@@ -51,7 +54,7 @@ export class GameSession extends Component {
         }
     }
 
-    start() {
+    start(): void {
         this.resetSession(false);
     }
 
@@ -70,29 +73,40 @@ export class GameSession extends Component {
         if (!this._isRunning || amount <= 0) {
             return;
         }
+
         this._lives = Math.max(0, this._lives - amount);
         if (this._lives <= 0) {
-            this._isRunning = false;
+            this.endRound();
         }
     }
 
-    update(deltaTime: number) {
+    update(deltaTime: number): void {
         if (!this._isRunning) {
             return;
         }
 
         this._timeLeft = Math.max(0, this._timeLeft - deltaTime);
         if (this._timeLeft <= 0) {
-            this._isRunning = false;
+            this.endRound();
         }
     }
 
-    private onTouchEnd(_event: EventTouch) {
+    private endRound(): void {
+        if (!this._isRunning) {
+            return;
+        }
+
+        this._isRunning = false;
+        const audio: AudioManager | null = AudioManager.instance;
+        audio?.stopMusic();
+        audio?.playSfx(SfxId.GameOver);
+    }
+
+    private onTouchEnd(_event: EventTouch): void {
         this.tryStartFromInput();
     }
 
-    private onMouseUp(event: EventMouse) {
-        // Left button only (desktop preview)
+    private onMouseUp(event: EventMouse): void {
         if (event.getButton() !== EventMouse.BUTTON_LEFT) {
             return;
         }
@@ -111,8 +125,14 @@ export class GameSession extends Component {
         this._lives = this.startLives;
         this._timeLeft = this.levelDuration;
         this._isRunning = running;
+
+        const audio: AudioManager | null = AudioManager.instance;
         if (running) {
             this._hasStartedOnce = true;
+            audio?.playMusic();
+            audio?.playSfx(SfxId.Start);
+        } else {
+            audio?.stopMusic();
         }
     }
 }
