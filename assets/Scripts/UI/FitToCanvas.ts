@@ -1,4 +1,5 @@
-import { _decorator, Component, Node, UITransform, view, Canvas } from 'cc';
+import { _decorator, Component, Node, UITransform, view, Canvas, Size } from 'cc';
+
 const { ccclass, property } = _decorator;
 
 @ccclass('FitToCanvas')
@@ -9,18 +10,18 @@ export class FitToCanvas extends Component {
     private _transform: UITransform | null = null;
     private _canvasTransform: UITransform | null = null;
 
-    onLoad() {
+    onLoad(): void {
         this._transform = this.getComponent(UITransform);
         this.resolveCanvas();
         this.applyFit();
         view.on('canvas-resize', this.applyFit, this);
     }
 
-    onDestroy() {
+    onDestroy(): void {
         view.off('canvas-resize', this.applyFit, this);
     }
 
-    start() {
+    start(): void {
         this.applyFit();
     }
 
@@ -54,7 +55,7 @@ export class FitToCanvas extends Component {
             return;
         }
 
-        const size = this._canvasTransform.contentSize;
+        const size: Size = this._canvasTransform.contentSize;
         this.node.setScale(1, 1, 1);
         this._transform.setContentSize(size.width, size.height);
     };
